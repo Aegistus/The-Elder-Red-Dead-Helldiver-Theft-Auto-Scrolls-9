@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SubtitleUI : MonoBehaviour
 {
+    [SerializeField] bool spaceToContinue = true;
     [SerializeField] TMP_Text characterName;
     [SerializeField] TMP_Text text;
     [SerializeField] Dialogue dialogue;
@@ -20,7 +21,7 @@ public class SubtitleUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (spaceToContinue && Input.GetKeyDown(KeyCode.Space))
         {
             NextFrame();
         }
@@ -35,8 +36,16 @@ public class SubtitleUI : MonoBehaviour
         }
         else
         {
-            characterName.text = dialogue.frames[frameIndex].characterName + ":";
-            text.text = dialogue.frames[frameIndex].text;
+            if (dialogue.frames[frameIndex].characterName == "" && dialogue.frames[frameIndex].text == "")
+            {
+                characterName.text = "";
+                text.text = "";
+            }
+            else
+            {
+                characterName.text = dialogue.frames[frameIndex].characterName + ":";
+                text.text = dialogue.frames[frameIndex].text;
+            }
         }
     }
 }
