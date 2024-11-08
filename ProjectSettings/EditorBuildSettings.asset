@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/SkyrimLoadingScene.unity
     guid: d3eff8cfddc321b4cbd19ca48ceade5b
   - enabled: 1
+    path: Assets/Scenes/SkyrimIntroScene.unity
+    guid: e865995ac80243e4287725d27771dd76
+  - enabled: 1
+    path: Assets/Scenes/CharacterCreator.unity
+    guid: c078a791a5ce5224c9b473377dcee03c
+  - enabled: 1
     path: Assets/Scenes/ElderHellGameScene.unity
     guid: d884d0f8ad40fc044b5749a2e1079e6c
   - enabled: 1
