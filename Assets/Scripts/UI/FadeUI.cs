@@ -13,6 +13,7 @@ public class FadeUI : MonoBehaviour
 
     private void Awake()
     {
+        element.gameObject.SetActive(true);
         if (fadeInOnAwake)
         {
             FadeIn();
