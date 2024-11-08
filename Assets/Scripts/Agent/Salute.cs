@@ -14,7 +14,6 @@ public class Salute : MonoBehaviour
         if (saluteOnStart)
         {
             StartCoroutine(Delay());
-            print("TEST");
         }
     }
 
