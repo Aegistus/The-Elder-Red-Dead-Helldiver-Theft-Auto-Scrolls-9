@@ -5,7 +5,7 @@ using System;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    public event Action<bool> OnInteractStateChange;
+    public event Action<bool, string> OnInteractStateChange;
 
     [SerializeField] Transform raycastOrigin;
     public LayerMask interactableLayers;
@@ -26,23 +26,20 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (Physics.Raycast(raycastOrigin.position, raycastOrigin.forward, out rayHit, interactionDistance, interactableLayers))
         {
+            IInteractable interactable = rayHit.collider.GetComponentInParent<IInteractable>();
             if (Input.GetKeyDown(KeyCode.E))
             {
-                CarMovement car = rayHit.collider.GetComponentInParent<CarMovement>();
-                WeaponAttack weapon = rayHit.collider.GetComponentInParent<WeaponAttack>();
-                currentlyMilking = rayHit.collider.GetComponentInParent<Cow>();
-                if (car != null)
+                if (interactable != null)
                 {
-                    SoundManager.Instance.PlaySoundAtPosition(openDoorSoundID, transform.position);
-                    GameManager.Instance.PlayerEnterCar(car);
+                    interactable.Interact(gameObject);
+                    if (interactable is Cow)
+                    {
+                        currentlyMilking = (Cow)interactable;
+                    }
                 }
-                else if (weapon != null)
+                else
                 {
-                    agentEquipment.PickupWeapon(weapon.gameObject);
-                }
-                else if (currentlyMilking != null)
-                {
-                    currentlyMilking.Milk();
+                    print("No interactable");
                 }
             }
             if (Input.GetKey(KeyCode.E))
@@ -51,13 +48,18 @@ public class PlayerInteraction : MonoBehaviour
                 {
                     currentlyMilking.Milk();
                 }
+                OnInteractStateChange?.Invoke(false, "");
             }
-            OnInteractStateChange?.Invoke(true);
+            if (interactable != null)
+            {
+                OnInteractStateChange?.Invoke(true, interactable.Description);
+            }
+
             //print("In interaction range");
         }
         else
         {
-            OnInteractStateChange?.Invoke(false);
+            OnInteractStateChange?.Invoke(false, "");
             currentlyMilking = null;
         }
     }

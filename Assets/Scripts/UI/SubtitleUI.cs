@@ -9,7 +9,7 @@ public class SubtitleUI : MonoBehaviour
     [SerializeField] bool spaceToContinue = true;
     [SerializeField] TMP_Text characterName;
     [SerializeField] TMP_Text text;
-    [SerializeField] Dialogue dialogue;
+    [SerializeField] CinematicDialogue dialogue;
     [SerializeField] string nextSceneName;
 
     int frameIndex = -1;

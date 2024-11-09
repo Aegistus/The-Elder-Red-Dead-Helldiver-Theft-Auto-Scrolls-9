@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Runtime.ConstrainedExecution;
 
 
-public class CarMovement : MonoBehaviour
+public class CarMovement : MonoBehaviour, IInteractable
 {
 	public LayerMask groundLayer;
     public float maxSpeed = 20f;
@@ -19,7 +20,9 @@ public class CarMovement : MonoBehaviour
 
 	public float CurrentSpeed => currentSpeed;
 
-	float currentSpeed = 0f;
+    public string Description => "Enter car";
+
+    float currentSpeed = 0f;
 	int runningSoundID;
 	int impactSoundID;
 	int carStartSoundID;
@@ -103,4 +106,10 @@ public class CarMovement : MonoBehaviour
 	{
 		return Physics.Raycast(transform.position + (Vector3.up * .5f), -transform.up, 3f, groundLayer);
 	}
+
+    public void Interact(GameObject interactor)
+    {
+        SoundManager.Instance.PlaySoundAtPosition("Car_Door_Open", transform.position);
+        GameManager.Instance.PlayerEnterCar(this);
+    }
 }

@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using static AgentEquipment;
 
-public abstract class WeaponAttack : MonoBehaviour
+public abstract class WeaponAttack : MonoBehaviour, IInteractable
 {
     [HideInInspector]
     public UnityEvent OnRecoil;
@@ -17,7 +18,15 @@ public abstract class WeaponAttack : MonoBehaviour
 
     public DamageSource Source { get; set; }
 
+    public string Description => "Pickup Weapon";
+
     public abstract void BeginAttack();
     public abstract void DuringAttack();
     public abstract void EndAttack();
+
+    public void Interact(GameObject interactor)
+    {
+        var agentEquipment = interactor.GetComponent<AgentEquipment>();
+        agentEquipment.PickupWeapon(gameObject);
+    }
 }

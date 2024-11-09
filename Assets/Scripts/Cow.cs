@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cow : MonoBehaviour
+public class Cow : MonoBehaviour, IInteractable
 {
     public float MilkMax => milkMax;
     public float MilkRemaining => milkRemaining;
+
+    public string Description => "Milk";
 
     [SerializeField] MeshRenderer rend;
     [SerializeField] float milkMax;
@@ -32,5 +34,10 @@ public class Cow : MonoBehaviour
         color.g = milkRemaining / milkMax;
         color.b = milkRemaining / milkMax;
         rend.material.color = color;
+    }
+
+    public void Interact(GameObject interactor)
+    {
+        Milk();
     }
 }
