@@ -9,6 +9,7 @@ public class InGameDialogueUI : MonoBehaviour
 
     [SerializeField] GameObject menu;
     [SerializeField] TMP_Text characterName;
+    [SerializeField] TMP_Text dialogueText;
     [SerializeField] Transform responseParent;
     [SerializeField] GameObject responsePrefab;
 
@@ -16,6 +17,7 @@ public class InGameDialogueUI : MonoBehaviour
     int frameIndex = -1;
     int currentResponse = 0;
     bool menuOpen = false;
+    bool needToUpdateHighlight = false;
 
     private void Start()
     {
@@ -34,19 +36,29 @@ public class InGameDialogueUI : MonoBehaviour
     {
         if (menuOpen)
         {
+            if (needToUpdateHighlight)
+            {
+                UpdateHighlightedResponse();
+                needToUpdateHighlight = false;
+            }
+
             if (Input.GetKeyDown(KeyCode.W))
             {
-                currentResponse = (currentResponse + 1) % currentDialogue.frames[frameIndex].responses.Length;
+                currentResponse = currentResponse == 0 ? currentDialogue.frames[frameIndex].responses.Length - 1 : currentResponse - 1;
                 UpdateHighlightedResponse();
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
-                currentResponse = (currentResponse - 1) % currentDialogue.frames[frameIndex].responses.Length;
+                currentResponse = (currentResponse + 1) % currentDialogue.frames[frameIndex].responses.Length;
                 UpdateHighlightedResponse();
             }
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 NextFrame();
+            }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                CloseMenu();
             }
         }
     }
@@ -59,7 +71,7 @@ public class InGameDialogueUI : MonoBehaviour
         characterName.text = currentDialogue.characterName;
         frameIndex = -1;
         NextFrame();
-        UpdateHighlightedResponse();
+        FindAnyObjectByType<PlayerController>().PauseInput = true;
         menuOpen = true;
     }
 
@@ -67,10 +79,23 @@ public class InGameDialogueUI : MonoBehaviour
     {
         menu.SetActive(false);
         menuOpen = false;
+        StartCoroutine(ReactivateInput());
+    }
+
+    IEnumerator ReactivateInput()
+    {
+        yield return new WaitForSeconds(.5f);
+        FindAnyObjectByType<PlayerController>().PauseInput = false;
     }
     public void NextFrame()
     {
         frameIndex++;
+        if (frameIndex >= currentDialogue.frames.Length)
+        {
+            CloseMenu();
+            return;
+        }
+        dialogueText.text = currentDialogue.frames[frameIndex].characterDialogue;
         for (int i = 0; i < responseParent.childCount; i++)
         {
             Destroy(responseParent.GetChild(i).gameObject);
@@ -80,7 +105,7 @@ public class InGameDialogueUI : MonoBehaviour
             Instantiate(responsePrefab, responseParent).GetComponent<TMP_Text>().text = currentDialogue.frames[frameIndex].responses[i];
         }
         currentResponse = 0;
-        UpdateHighlightedResponse();
+        needToUpdateHighlight = true;
     }
 
     public void UpdateHighlightedResponse()
@@ -91,7 +116,7 @@ public class InGameDialogueUI : MonoBehaviour
             response.fontStyle = FontStyles.Normal;
         }
         var highlightedResponse = responseParent.GetChild(currentResponse).GetComponent<TMP_Text>();
-        highlightedResponse.fontStyle = FontStyles.Bold | FontStyles.Underline;
+        highlightedResponse.fontStyle = FontStyles.Underline;
     }
 
 }

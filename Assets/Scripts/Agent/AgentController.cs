@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class AgentController : MonoBehaviour
 {
+    public bool PauseInput { get; set; } = false;
+
     public bool StartAttack { get; protected set; } = false;
     public bool DuringAttack { get; protected set; } = false;
     public bool EndAttack { get; protected set; } = false;

@@ -36,6 +36,10 @@ public class PlayerMovement : AgentMovement
 
     void Update()
     {
+        if (playerController.PauseInput)
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.G))
         {
             anim.Play("Armature|Salute");

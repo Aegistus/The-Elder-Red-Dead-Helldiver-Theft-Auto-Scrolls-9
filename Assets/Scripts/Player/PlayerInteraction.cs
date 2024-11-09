@@ -12,11 +12,13 @@ public class PlayerInteraction : MonoBehaviour
     public float interactionDistance = 1f;
     int openDoorSoundID;
 
+    PlayerController playerController;
     AgentEquipment agentEquipment;
     Cow currentlyMilking;
 
     void Start()
     {
+        playerController = GetComponent<PlayerController>();
         openDoorSoundID = SoundManager.Instance.GetSoundID("Car_Door_Open");
         agentEquipment = GetComponent<AgentEquipment>();
     }
@@ -24,6 +26,10 @@ public class PlayerInteraction : MonoBehaviour
     RaycastHit rayHit;
     void Update()
     {
+        if (playerController.PauseInput)
+        {
+            return;
+        }
         if (Physics.Raycast(raycastOrigin.position, raycastOrigin.forward, out rayHit, interactionDistance, interactableLayers))
         {
             IInteractable interactable = rayHit.collider.GetComponentInParent<IInteractable>();
