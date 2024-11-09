@@ -57,7 +57,6 @@ GameObject:
   - component: {fileID: 3239459879546263448}
   - component: {fileID: 3239459879546263449}
   - component: {fileID: 3239459879546263452}
-  - component: {fileID: 5896546379627803165}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -125,17 +124,3 @@ MonoBehaviour:
   numOfPositionalSources: 500
   mixerGroup: {fileID: 0}
   soundPath: 
---- !u!114 &5896546379627803165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3239459879546263446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a37acf5c9784edd4bbabc2442c210b75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startQuestDelay: 3
-  mainQuest: {fileID: 11400000, guid: 49eb8cb588908e340872310047269e9e, type: 2}

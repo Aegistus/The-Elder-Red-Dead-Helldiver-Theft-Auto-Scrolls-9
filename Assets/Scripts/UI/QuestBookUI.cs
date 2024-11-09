@@ -13,11 +13,11 @@ public class QuestBookUI : MonoBehaviour
 
     public bool QuestBookOpen { get; private set; }
 
-    PlayerQuests playerQuests;
+    QuestManager questManager;
 
     private void Start()
     {
-        playerQuests = FindAnyObjectByType<PlayerQuests>();
+        questManager = QuestManager.Instance;
         CloseBook();
     }
 
@@ -53,17 +53,17 @@ public class QuestBookUI : MonoBehaviour
 
     public void UpdateBook()
     {
-        questTitle.text = playerQuests.currentQuests[0].title;
-        currentQuestTitle.text = playerQuests.currentQuests[0].title;
-        currentQuestDescription.text = playerQuests.currentQuests[0].description;
+        questTitle.text = questManager.currentQuests[0].title;
+        currentQuestTitle.text = questManager.currentQuests[0].title;
+        currentQuestDescription.text = questManager.currentQuests[0].description;
         for (int i = 0; i < questObjectiveParent.childCount; i++)
         {
             Destroy(questObjectiveParent.GetChild(i).gameObject);
         }
-        for (int i = 0; i < playerQuests.currentQuests[0].unlockedObjectives.Count; i++)
+        for (int i = 0; i < questManager.currentQuests[0].unlockedObjectives.Count; i++)
         {
             var objectiveUI = Instantiate(questObjectivePrefab, questObjectiveParent);
-            objectiveUI.GetComponent<TMP_Text>().text = playerQuests.currentQuests[0].unlockedObjectives[i].description;
+            objectiveUI.GetComponent<TMP_Text>().text = questManager.currentQuests[0].unlockedObjectives[i].description;
         }
     }
 }

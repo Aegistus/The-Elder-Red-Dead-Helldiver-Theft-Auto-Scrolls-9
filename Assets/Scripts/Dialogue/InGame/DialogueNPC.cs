@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UltEvents;
 
 public class DialogueNPC : MonoBehaviour, IInteractable
 {
     [SerializeField] InGameDialogue dialogue;
     [SerializeField] Camera dialogueCamera;
+    public UltEvent OnDialogueComplete;
 
     public string Description => "Talk to NPC";
 
@@ -19,9 +21,10 @@ public class DialogueNPC : MonoBehaviour, IInteractable
         dialogueCamera.gameObject.SetActive(true);
     }
 
-    public void DeactivateCamera()
+    public void CompleteDialogue()
     {
         mainCam.SetActive(true);
         dialogueCamera.gameObject.SetActive(false);
+        OnDialogueComplete.Invoke();
     }
 }

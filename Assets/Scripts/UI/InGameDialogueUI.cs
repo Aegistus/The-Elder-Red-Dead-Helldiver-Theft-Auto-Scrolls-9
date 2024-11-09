@@ -82,7 +82,7 @@ public class InGameDialogueUI : MonoBehaviour
     {
         if (npc)
         {
-            npc.DeactivateCamera();
+            npc.CompleteDialogue();
         }
         menu.SetActive(false);
         StartCoroutine(ReactivateInput());

@@ -570,7 +570,6 @@ GameObject:
   - component: {fileID: 2542434610876964793}
   - component: {fileID: 923826976730623430}
   - component: {fileID: 2118666757}
-  - component: {fileID: 4447492096959323706}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -793,20 +792,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 1.5, z: 0}
---- !u!114 &4447492096959323706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2542434610876964789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5404f1b26a0e094aab39e880f4109cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentQuests:
-  - {fileID: 11400000, guid: 49eb8cb588908e340872310047269e9e, type: 2}
 --- !u!1 &2631583976221703357
 GameObject:
   m_ObjectHideFlags: 0
