@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class Quest
+[CreateAssetMenu(fileName = "New Quest", menuName = "Quest")]
+public class Quest : ScriptableObject
 {
     [System.Serializable]
-    public class Checkpoint
+    public class Objective
     {
         public Vector3 position;
         public string description;
@@ -17,6 +17,13 @@ public class Quest
 
     public string title;
     [TextArea] public string description;
-    public Checkpoint[] checkpoints;
+    public Objective[] objectives;
+    
+    [HideInInspector] public Objective[] unlockedObjectives;
+
+    public void StartQuest()
+    {
+
+    }
 
 }

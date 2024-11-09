@@ -41,12 +41,14 @@ public class QuestBookUI : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(true);
         UpdateBook();
         QuestBookOpen = true;
+        Time.timeScale = 0;
     }
 
     public void CloseBook()
     {
         transform.GetChild(0).gameObject.SetActive(false);
         QuestBookOpen = false;
+        Time.timeScale = 1;
     }
 
     public void UpdateBook()
@@ -58,10 +60,10 @@ public class QuestBookUI : MonoBehaviour
         {
             Destroy(questObjectiveParent.GetChild(i).gameObject);
         }
-        for (int i = 0; i < playerQuests.currentQuests[0].checkpoints.Length; i++)
+        for (int i = 0; i < playerQuests.currentQuests[0].unlockedObjectives.Length; i++)
         {
             var objectiveUI = Instantiate(questObjectivePrefab, questObjectiveParent);
-            objectiveUI.GetComponent<TMP_Text>().text = playerQuests.currentQuests[0].checkpoints[i].description;
+            objectiveUI.GetComponent<TMP_Text>().text = playerQuests.currentQuests[0].unlockedObjectives[i].description;
         }
     }
 }
