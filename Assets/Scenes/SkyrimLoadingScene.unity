@@ -614,7 +614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4d5444776aaf1045a4042216321b239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: ElderHellGameScene
+  scene: SkyrimIntroScene
   skippableScene: 0
 --- !u!4 &867333901
 Transform:

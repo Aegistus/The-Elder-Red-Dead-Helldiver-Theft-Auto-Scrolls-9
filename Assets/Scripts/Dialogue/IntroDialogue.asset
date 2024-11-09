@@ -14,19 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frames:
   - characterName: Milk President
-    text: Hey Helldiver!
+    text: Milkdiver!
   - characterName: Milk President
-    text: You're behind on your milk payments.
+    text: We've discovered a new planet to get milk!
   - characterName: Milk President
-    text: And Super Duper Earth needs milk for the war effort!
+    text: We're calling it... *Skyrim* (TM).
   - characterName: Milk President
-    text: I'm afraid getting milk won't be as easy as last game.
+    text: (legally distinct)
   - characterName: Milk President
-    text: The darn Socialist cows have risen up!
+    text: As usual, you gotta pay off your milk debt.
   - characterName: Milk President
-    text: They've created a cowtomaton army!
+    text: Be careful, these cows seem different to the other ones we've seen.
   - characterName: Milk President
-    text: Get to your hell pod!
+    text: Now get to your hell pod!
   - characterName: Milk President
     text: Show me you have what it takes to be free!
   - characterName: Milk President

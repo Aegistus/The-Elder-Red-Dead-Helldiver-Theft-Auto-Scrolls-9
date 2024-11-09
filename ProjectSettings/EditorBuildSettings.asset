@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 024ee7bfdc0badf44983aeb0c9a3a98f
   - enabled: 1
+    path: Assets/Scenes/ExpositionScene.unity
+    guid: d70f1466df49c9a46801eeb87f21ce9c
+  - enabled: 1
     path: Assets/Scenes/DiveCinematic.unity
     guid: 001e5ec131fb1974eb319337b4703b88
   - enabled: 1
@@ -20,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CharacterCreator.unity
     guid: c078a791a5ce5224c9b473377dcee03c
+  - enabled: 1
+    path: Assets/Scenes/PostCharacterScene.unity
+    guid: e539300742f981e40b2c611ce80dd1d0
   - enabled: 1
     path: Assets/Scenes/ElderHellGameScene.unity
     guid: d884d0f8ad40fc044b5749a2e1079e6c
