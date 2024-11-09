@@ -18,7 +18,7 @@ public class PlayerMovement : AgentMovement
 
     Rigidbody rb;
     bool diving = false;
-    float divingTime = 3f;
+    float divingTime = 2f;
     float diveTimer;
     float diveForce = 400f;
     Vector3 diveForcePosition = new Vector3(0, 1.5f, 0);

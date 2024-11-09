@@ -22,7 +22,10 @@ public class Projectile : MonoBehaviour
         RaycastHit rayHit;
         if (Physics.Raycast(transform.position, transform.forward, out rayHit, speed * Time.deltaTime, mask, QueryTriggerInteraction.Ignore))
         {
-            //PoolManager.Instance.SpawnObjectWithLifetime(impactEffectName, rayHit.point, transform.rotation, 5f);
+            if (impactEffectName != "")
+            {
+                PoolManager.Instance.SpawnObjectWithLifetime(impactEffectName, rayHit.point, transform.rotation, 5f);
+            }
             AgentHealth health = rayHit.collider.GetComponentInParent<AgentHealth>();
             PlayerHealth playerHealth = rayHit.collider.GetComponentInParent<PlayerHealth>();
             if (health)
