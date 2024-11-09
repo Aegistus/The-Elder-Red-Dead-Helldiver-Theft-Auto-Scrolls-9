@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 using Random = UnityEngine.Random;
+using UltEvents;
 
 public class AgentHealth : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class AgentHealth : MonoBehaviour
     public event Action OnArmorChange;
     public event Action OnHealthChange;
     public event Action OnAgentDeath;
-
     public float CurrentArmor => currentArmor;
     public float CurrentHealth => currentHealth;
     public float MaxArmor => maxArmor;

@@ -280,6 +280,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2421089286696329246}
+  - component: {fileID: 7848033665887746028}
   - component: {fileID: 8016119143761668520}
   - component: {fileID: 3716590112296072312}
   - component: {fileID: 1426485624839052518}
@@ -311,6 +312,19 @@ Transform:
   - {fileID: 7940225388893446393}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7848033665887746028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7813332160576105014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9332d88e11d4cc54b96b80a181a9e4f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  milkableCowPrefab: {fileID: 2052740226243187761, guid: 6deda9fd5d308954bafadbecba99315a, type: 3}
 --- !u!114 &8016119143761668520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,7 +381,7 @@ MonoBehaviour:
   armorRegenDelay: 0
   armorRegenRate: 0
   maxArmor: 0
-  maxHealth: 50
+  maxHealth: 300
 --- !u!114 &5615508088231539501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,10 +470,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.7
-  m_Height: 2.85
+  m_Radius: 1.07
+  m_Height: 1.76
   m_Direction: 1
-  m_Center: {x: 0, y: 1.5, z: 0}
+  m_Center: {x: 0, y: 4.71, z: 0}
 --- !u!1 &7861001003433733053
 GameObject:
   m_ObjectHideFlags: 0
