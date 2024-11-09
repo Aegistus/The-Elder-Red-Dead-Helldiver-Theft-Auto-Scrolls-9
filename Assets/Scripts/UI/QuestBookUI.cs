@@ -60,7 +60,7 @@ public class QuestBookUI : MonoBehaviour
         {
             Destroy(questObjectiveParent.GetChild(i).gameObject);
         }
-        for (int i = 0; i < playerQuests.currentQuests[0].unlockedObjectives.Length; i++)
+        for (int i = 0; i < playerQuests.currentQuests[0].unlockedObjectives.Count; i++)
         {
             var objectiveUI = Instantiate(questObjectivePrefab, questObjectiveParent);
             objectiveUI.GetComponent<TMP_Text>().text = playerQuests.currentQuests[0].unlockedObjectives[i].description;

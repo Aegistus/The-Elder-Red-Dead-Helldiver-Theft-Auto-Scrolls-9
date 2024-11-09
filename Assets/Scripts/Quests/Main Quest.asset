@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Main Quest
   m_EditorClassIdentifier: 
   title: I'm In Your (Milk) Debt
-  description: Find out wtf is going on
+  description: Find out wtf is going on.
   objectives:
-  - position: {x: 0, y: 0, z: 0}
+  - position: {x: -112.33731, y: 2.5, z: 6.302704}
     description: Talk to Hugh Jass
     OnStart:
       m_PersistentCalls:
@@ -31,4 +31,21 @@ MonoBehaviour:
     OnFinish:
       m_PersistentCalls:
         m_Calls: []
-  unlockedObjectives: []
+  currentObjective:
+    position: {x: -112.33731, y: 1.95178, z: 6.302704}
+    description: Talk to Hugh Jass
+    OnStart:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFinish:
+      m_PersistentCalls:
+        m_Calls: []
+  unlockedObjectives:
+  - position: {x: -112.33731, y: 1.95178, z: 6.302704}
+    description: Talk to Hugh Jass
+    OnStart:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFinish:
+      m_PersistentCalls:
+        m_Calls: []

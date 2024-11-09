@@ -19,6 +19,7 @@ public class Quest : ScriptableObject
     [TextArea] public string description;
     public Objective[] objectives;
     
-    [HideInInspector] public Objective[] unlockedObjectives;
+    [HideInInspector] public Objective currentObjective;
+    [HideInInspector] public List<Objective> unlockedObjectives = new();
 
 }
