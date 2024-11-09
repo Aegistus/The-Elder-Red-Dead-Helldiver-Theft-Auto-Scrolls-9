@@ -4,5 +4,11 @@ using UnityEngine;
 
 public class PlayerQuests : MonoBehaviour
 {
-    public Quest[] currentQuests;
+    public List<Quest> currentQuests;
+
+    public void AddQuest(Quest quest)
+    {
+        currentQuests.Add(quest);
+        quest.StartQuest();
+    }
 }

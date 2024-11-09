@@ -68,6 +68,11 @@ public class SoundManager : MonoBehaviour
 		return sound.source;
 	}
 
+	public AudioSource PlaySoundGlobal(string soundName)
+	{
+		return PlaySoundGlobal(Instance.GetSoundID(soundName));
+	}
+
 	public PositionalAudioSource PlaySoundAtPosition(string soundName, Vector3 position)
     {
 		return PlaySoundAtPosition(Instance.GetSoundID(soundName), position);

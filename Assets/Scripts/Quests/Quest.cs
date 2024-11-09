@@ -23,7 +23,8 @@ public class Quest : ScriptableObject
 
     public void StartQuest()
     {
-
+        QuestPopup.Instance.ShowPopup(title);
+        SoundManager.Instance.PlaySoundGlobal("Quest_Start");
     }
 
 }
