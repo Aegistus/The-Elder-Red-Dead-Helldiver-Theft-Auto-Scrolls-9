@@ -18,6 +18,7 @@ public class InGameDialogueUI : MonoBehaviour
     int currentResponse = 0;
     bool menuOpen = false;
     bool needToUpdateHighlight = false;
+    DialogueNPC npc;
 
     private void Start()
     {
@@ -63,8 +64,9 @@ public class InGameDialogueUI : MonoBehaviour
         }
     }
 
-    public void OpenMenu(InGameDialogue dialogue)
+    public void OpenMenu(InGameDialogue dialogue, DialogueNPC npc)
     {
+        this.npc = npc;
         currentDialogue = dialogue;
         frameIndex = 0;
         menu.SetActive(true);
@@ -78,6 +80,10 @@ public class InGameDialogueUI : MonoBehaviour
 
     public void CloseMenu()
     {
+        if (npc)
+        {
+            npc.DeactivateCamera();
+        }
         menu.SetActive(false);
         StartCoroutine(ReactivateInput());
         SoundManager.Instance.StopPlayingGlobal("Dialogue_Theme");

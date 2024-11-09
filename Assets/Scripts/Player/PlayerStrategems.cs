@@ -70,7 +70,7 @@ public class PlayerStrategems : MonoBehaviour
                     OnInputChange?.Invoke();
                 }
                 CheckForCompletedStrategem();
-                PrintInput();
+                //PrintInput();
             }
         }
         if (currentStrategemBall != null)
