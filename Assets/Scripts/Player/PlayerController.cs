@@ -9,7 +9,7 @@ public class PlayerController : AgentController
     [SerializeField] GameObject[] milkdiverCosmetics;
     [SerializeField] GameObject[] skyrimmerCosmetics;
 
-    private void Awake()
+    private void Start()
     {
         GameObject[] cosmetics = beanCosmetics;
         switch (PlayerData.Instance.selectedPlayerModel)

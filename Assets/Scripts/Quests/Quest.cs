@@ -21,10 +21,4 @@ public class Quest : ScriptableObject
     
     [HideInInspector] public Objective[] unlockedObjectives;
 
-    public void StartQuest()
-    {
-        QuestPopup.Instance.ShowPopup(title);
-        SoundManager.Instance.PlaySoundGlobal("Quest_Start");
-    }
-
 }
