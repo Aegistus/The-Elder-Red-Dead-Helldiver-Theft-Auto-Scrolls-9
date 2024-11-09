@@ -9,5 +9,6 @@ public class ExplodingCow : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Instantiate(explosion, collision.collider.transform.position, Quaternion.identity);
+        SoundManager.Instance.PlaySoundAtPosition("Explosion", transform.position);
     }
 }

@@ -19,9 +19,14 @@ MonoBehaviour:
     responses:
     - Dragon? That was a cow!
     - Dragon? How about you try dragon these nuts...
-    - Did you see where that "dragon" went? I need to milk it.
+  - characterDialogue: Cow? Never heard of cows. Round here we call them dragons.
+    responses:
+    - Well did you see where this "dragon" went?
   - characterDialogue: The dragon went over there. I'll mark it on your map
     responses:
-    - Thank you Hugh!
-    - I love you Hugh!
-    - Hugh, you're such a weirdo.
+    - It's a shame the dragon destroyed this town.
+    - Those Imperials deserved what they got.
+    - Thanks Hugh.
+  - characterDialogue: Hahaha, that's so funny!
+    responses:
+    - ...

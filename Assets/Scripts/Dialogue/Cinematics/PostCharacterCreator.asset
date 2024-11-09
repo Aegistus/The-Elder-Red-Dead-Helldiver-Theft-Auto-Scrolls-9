@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5752dd9107f1a544fbb915bc58244804, type: 3}
+  m_Script: {fileID: 11500000, guid: d26e8b6d90dfeef4c84b9dff46d8a357, type: 3}
   m_Name: PostCharacterCreator
   m_EditorClassIdentifier: 
   frames:

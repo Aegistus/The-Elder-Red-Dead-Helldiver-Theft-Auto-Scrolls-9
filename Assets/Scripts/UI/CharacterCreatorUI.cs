@@ -24,7 +24,7 @@ public class CharacterCreatorUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             options[currentOption].Unselect();
-            currentOption = (currentOption - 1) % options.Length;
+            currentOption = currentOption == 0 ? options.Length - 1 : currentOption - 1;
             options[currentOption].Select();
         }
     }
