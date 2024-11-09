@@ -4,6 +4,35 @@ using UnityEngine;
 
 public class PlayerController : AgentController
 {
+    [SerializeField] GameObject[] beanCosmetics;
+    [SerializeField] GameObject[] cowboyCosmetics;
+    [SerializeField] GameObject[] milkdiverCosmetics;
+    [SerializeField] GameObject[] skyrimmerCosmetics;
+
+    private void Awake()
+    {
+        GameObject[] cosmetics = beanCosmetics;
+        switch (PlayerData.Instance.selectedPlayerModel)
+        {
+            case PlayerData.PlayerModel.Bean:
+                cosmetics = beanCosmetics;
+                break;
+            case PlayerData.PlayerModel.Cowboy:
+                cosmetics = cowboyCosmetics;
+                break;
+            case PlayerData.PlayerModel.Milkdiver:
+                cosmetics = milkdiverCosmetics;
+                break;
+            case PlayerData.PlayerModel.Skyrimmer:
+                cosmetics = skyrimmerCosmetics;
+                break;
+        }
+        for (int i = 0; i < cosmetics.Length; i++)
+        {
+            cosmetics[i].SetActive(true);
+        }
+    }
+
     private void Update()
     {
         StartAttack = Input.GetMouseButtonDown(0);
