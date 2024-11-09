@@ -72,14 +72,16 @@ public class InGameDialogueUI : MonoBehaviour
         frameIndex = -1;
         NextFrame();
         FindAnyObjectByType<PlayerController>().PauseInput = true;
+        SoundManager.Instance.PlaySoundGlobal("Dialogue_Theme");
         menuOpen = true;
     }
 
     public void CloseMenu()
     {
         menu.SetActive(false);
-        menuOpen = false;
         StartCoroutine(ReactivateInput());
+        SoundManager.Instance.StopPlayingGlobal("Dialogue_Theme");
+        menuOpen = false;
     }
 
     IEnumerator ReactivateInput()

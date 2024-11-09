@@ -149,6 +149,11 @@ public class SoundManager : MonoBehaviour
 		}
 	}
 
+	public void StopPlayingGlobal(string soundName)
+	{
+		StopPlayingGlobal(GetSoundID(soundName));
+	}
+
 	/// <summary>
 	/// Gets the integer identifier of a sound with string name. The ID will be greater than 0 and less than
 	/// the total number of sounds.
