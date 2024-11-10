@@ -11,15 +11,16 @@ public class PlayerShouts : MonoBehaviour
     public UltEvent OnFirstShout;
 
     [SerializeField] float shoutForce = 30f;
-    [SerializeField] float shoutDistance = 10f;
     [SerializeField] float shoutRadius = 5f;
     [SerializeField] float cooldown = 5f;
     [SerializeField] LayerMask layers;
     [SerializeField] ParticleSystem particleEffects;
+    [SerializeField] ParticleSystem shockWave;
 
+    float shoutDelay = 1.1f;
     float cooldownTimer;
     bool usedFirstShout = false;
-    public bool ShoutsUnlocked { get; set; } = false;
+    public bool ShoutsUnlocked { get; set; } = true;
 
     private void Update()
     {
@@ -36,27 +37,36 @@ public class PlayerShouts : MonoBehaviour
 
     public void Shout()
     {
-        RaycastHit[] sphereHits = Physics.SphereCastAll(new Ray(transform.position, transform.forward), shoutRadius, shoutDistance, layers, drawType: CastDrawType.Minimal, drawDuration: 5f, preview: PreviewCondition.Editor);
-        for (int i = 0; i < sphereHits.Length; i++)
+        particleEffects.Play();
+        SoundManager.Instance.PlaySoundGlobal("Skyrim_Shout");
+        StartCoroutine(DelayedEffect());
+    }
+
+    IEnumerator DelayedEffect()
+    {
+        yield return new WaitForSeconds(shoutDelay);
+        Collider[] collisions = Physics.OverlapSphere(transform.position, shoutRadius, layers, drawDuration: 5f, preview: PreviewCondition.Editor);
+        for (int i = 0; i < collisions.Length; i++)
         {
-            if (sphereHits[i].collider.GetComponent<PlayerController>())
+            if (collisions[i].GetComponent<PlayerController>())
             {
                 continue;
             }
-            Rigidbody rb = sphereHits[i].collider.attachedRigidbody;
+            Rigidbody rb = collisions[i].attachedRigidbody;
             if (rb != null)
             {
                 rb.isKinematic = false;
                 rb.AddForce(Random.onUnitSphere * shoutForce, ForceMode.Impulse);
             }
-            var navAgent = sphereHits[i].collider.GetComponent<NavMeshAgent>();
-            if (navAgent)
+            var agentHealth = collisions[i].GetComponent<AgentHealth>();
+            if (agentHealth)
             {
-                navAgent.enabled = false;
+                agentHealth.Kill();
             }
-            print(sphereHits[i].collider.gameObject.name);
+            print(collisions[i].gameObject.name);
         }
-        particleEffects.Play();
+        shockWave.Play();
+        SoundManager.Instance.PlaySoundAtPosition("Explosion", transform.position);
         if (!usedFirstShout)
         {
             OnFirstShout?.Invoke();
