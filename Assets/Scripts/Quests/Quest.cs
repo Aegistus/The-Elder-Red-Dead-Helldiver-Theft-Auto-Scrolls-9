@@ -22,8 +22,8 @@ public class Quest
     public Objective[] objectives;
     public QuestEnum questEnum;
     public UltEvent OnQuestComplete;
-    public int currentObjectiveIndex;
-    
+
+    [HideInInspector] public int currentObjectiveInd = -1;
     [HideInInspector] public Objective currentObjective;
     [HideInInspector] public List<Objective> unlockedObjectives = new();
 

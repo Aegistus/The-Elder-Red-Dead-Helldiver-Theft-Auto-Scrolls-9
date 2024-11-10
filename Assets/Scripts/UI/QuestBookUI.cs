@@ -53,6 +53,10 @@ public class QuestBookUI : MonoBehaviour
 
     public void UpdateBook()
     {
+        if (questManager.currentQuests.Count == 0)
+        {
+            return;
+        }
         questTitle.text = questManager.currentQuests[0].title;
         currentQuestTitle.text = questManager.currentQuests[0].title;
         currentQuestDescription.text = questManager.currentQuests[0].description;

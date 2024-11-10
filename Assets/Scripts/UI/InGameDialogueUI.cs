@@ -20,7 +20,7 @@ public class InGameDialogueUI : MonoBehaviour
     bool needToUpdateHighlight = false;
     DialogueNPC npc;
 
-    readonly float inputDelay = 1f;
+    readonly float inputDelay = .5f;
     float timer = 0f;
 
     GameObject questMarker;

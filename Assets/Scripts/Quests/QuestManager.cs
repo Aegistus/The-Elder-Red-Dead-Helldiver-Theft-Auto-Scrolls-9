@@ -50,11 +50,11 @@ public class QuestManager : MonoBehaviour
     public void UpdateQuestObjective(QuestEnum questEnum, int newObjectiveIndex)
     {
         Quest quest = currentQuests.Find(q => q.questEnum == questEnum);
-        if (quest == null || quest.currentObjectiveIndex >= newObjectiveIndex)
+        if (quest == null || quest.currentObjectiveInd >= newObjectiveIndex)
         {
             return;
         }
-        quest.currentObjectiveIndex = newObjectiveIndex;
+        quest.currentObjectiveInd = newObjectiveIndex;
         quest.currentObjective.OnFinish.Invoke();
         StartCoroutine(UpdateDelay(quest, newObjectiveIndex));
     }
