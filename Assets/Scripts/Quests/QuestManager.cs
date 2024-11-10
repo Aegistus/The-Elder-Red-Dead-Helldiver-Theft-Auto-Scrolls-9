@@ -45,6 +45,7 @@ public class QuestManager : MonoBehaviour
     public void UpdateQuestObjective(QuestEnum questEnum, int newObjectiveIndex)
     {
         Quest quest = currentQuests.Find(q => q.questEnum == questEnum);
+        quest.currentObjective.OnFinish.Invoke();
         StartCoroutine(UpdateDelay(quest, newObjectiveIndex));
     }
 
@@ -59,7 +60,6 @@ public class QuestManager : MonoBehaviour
     IEnumerator UpdateDelay(Quest quest, int objectiveIndex)
     {
         yield return new WaitForSeconds(questUpdateDelay);
-        quest.currentObjective.OnFinish.Invoke();
         quest.unlockedObjectives.Add(quest.objectives[objectiveIndex]);
         quest.currentObjective = quest.objectives[objectiveIndex];
         quest.currentObjective.OnStart.Invoke();
