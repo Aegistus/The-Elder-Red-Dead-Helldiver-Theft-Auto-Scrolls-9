@@ -61,6 +61,7 @@ public class QuestManager : MonoBehaviour
     public void FinishQuest(QuestEnum questEnum)
     {
         Quest quest = currentQuests.Find(q => q.questEnum == questEnum);
+        quest.currentObjective?.OnFinish?.Invoke();
         if (quest == null)
         {
             return;
