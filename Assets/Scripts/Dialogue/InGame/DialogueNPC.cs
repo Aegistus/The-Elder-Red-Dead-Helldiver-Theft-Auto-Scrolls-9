@@ -21,10 +21,13 @@ public class DialogueNPC : MonoBehaviour, IInteractable
         dialogueCamera.gameObject.SetActive(true);
     }
 
-    public void CompleteDialogue()
+    public void CompleteDialogue(bool aborted)
     {
         mainCam.SetActive(true);
         dialogueCamera.gameObject.SetActive(false);
-        OnDialogueComplete.Invoke();
+        if (!aborted)
+        {
+            OnDialogueComplete.Invoke();
+        }
     }
 }

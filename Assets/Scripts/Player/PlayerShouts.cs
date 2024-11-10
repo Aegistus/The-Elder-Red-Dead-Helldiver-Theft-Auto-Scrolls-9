@@ -60,6 +60,7 @@ public class PlayerShouts : MonoBehaviour
         if (!usedFirstShout)
         {
             OnFirstShout?.Invoke();
+            usedFirstShout = true;
         }
     }
 }

@@ -20,6 +20,12 @@ public class InGameDialogueUI : MonoBehaviour
     bool needToUpdateHighlight = false;
     DialogueNPC npc;
 
+    readonly float inputDelay = 1f;
+    float timer = 0f;
+
+    GameObject questMarker;
+    bool aborted = false;
+
     private void Start()
     {
         if (Instance == null)
@@ -53,14 +59,19 @@ public class InGameDialogueUI : MonoBehaviour
                 currentResponse = (currentResponse + 1) % currentDialogue.frames[frameIndex].responses.Length;
                 UpdateHighlightedResponse();
             }
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && timer <= 0)
             {
                 NextFrame();
             }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                aborted = true;
                 CloseMenu();
             }
+        }
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
         }
     }
 
@@ -76,18 +87,22 @@ public class InGameDialogueUI : MonoBehaviour
         FindAnyObjectByType<PlayerController>().PauseInput = true;
         SoundManager.Instance.PlaySoundGlobal("Dialogue_Theme");
         menuOpen = true;
+        timer = inputDelay;
+        questMarker = GameObject.FindGameObjectWithTag("Quest Marker");
+        questMarker.SetActive(false);
     }
 
     public void CloseMenu()
     {
         if (npc)
         {
-            npc.CompleteDialogue();
+            npc.CompleteDialogue(aborted);
         }
         menu.SetActive(false);
         StartCoroutine(ReactivateInput());
         SoundManager.Instance.StopPlayingGlobal("Dialogue_Theme");
         menuOpen = false;
+        questMarker?.SetActive(true);
     }
 
     IEnumerator ReactivateInput()
@@ -100,6 +115,7 @@ public class InGameDialogueUI : MonoBehaviour
         frameIndex++;
         if (frameIndex >= currentDialogue.frames.Length)
         {
+            aborted = false;
             CloseMenu();
             return;
         }
@@ -114,6 +130,7 @@ public class InGameDialogueUI : MonoBehaviour
         }
         currentResponse = 0;
         needToUpdateHighlight = true;
+        timer = inputDelay;
     }
 
     public void UpdateHighlightedResponse()
