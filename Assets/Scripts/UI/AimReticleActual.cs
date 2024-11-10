@@ -22,7 +22,10 @@ public class AimReticleActual : MonoBehaviour
             Transform projectileSpawnPoint = ((RangedWeaponAttack)playerEquipment.CurrentWeaponAttack).ProjectileSpawnPoint;
             if (Physics.Raycast(projectileSpawnPoint.position, projectileSpawnPoint.forward, out rayHit, 100f, collidableMask))
             {
-                reticle.position = Camera.main.WorldToScreenPoint(rayHit.point);
+                if (Camera.main != null)
+                {
+                    reticle.position = Camera.main.WorldToScreenPoint(rayHit.point);
+                }
             }
         }
     }
