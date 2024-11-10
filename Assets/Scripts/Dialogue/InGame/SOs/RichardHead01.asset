@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386f8569a83cfc74eae5518354ccbcc4, type: 3}
+  m_Name: RichardHead01
+  m_EditorClassIdentifier: 
+  characterName: Archmage Richard Head
+  frames:
+  - characterDialogue: Hello there traveller! What can I do for you?
+    responses:
+    - I killed a "dragon" just now, and there was a weird particle effect afterwards.
+    - Do any of your friends call you Dick?
+    - Ya got any milk?
+  - characterDialogue: Oh! You're the one that killed the dragon?
+    responses:
+    - ...
+  - characterDialogue: And there was a weird particle effect that played afterwards?
+    responses:
+    - ...
+  - characterDialogue: Like a really low quality one from the Unity Asset Store?
+    responses:
+    - ...
+  - characterDialogue: Do you have any idea what this means???
+    responses:
+    - No. That's why I'm asking you.
+  - characterDialogue: You must be a milkborn! You can use the powers of milk to
+      create magic!
+    responses:
+    - Is there any way to learn this power?
+  - characterDialogue: Press 'V' on your keyboard to use the shout. Try it on those
+      boxes behind me.
+    responses:
+    - ...

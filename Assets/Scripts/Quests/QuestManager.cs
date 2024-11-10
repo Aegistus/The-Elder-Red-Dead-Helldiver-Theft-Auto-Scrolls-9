@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum QuestEnum
 {
-    MainQuest,
+    MainQuest, MilkDrinker
 }
 
 public class QuestManager : MonoBehaviour
@@ -37,9 +37,14 @@ public class QuestManager : MonoBehaviour
     {
         currentQuests.Add(quest);
         QuestPopup.Instance.ShowQuestStartPopup(quest.title);
-        SoundManager.Instance.PlaySoundGlobal("Quest_Start");
         quest.currentObjective = quest.objectives[0];
         UpdateQuestObjective(quest.questEnum, 0);
+    }
+
+    public void AddQuest(QuestEnum questEnum)
+    {
+        Quest quest = sideQuests.Find(q => q.questEnum == questEnum);
+        AddQuest(quest);
     }
 
     public void UpdateQuestObjective(QuestEnum questEnum, int newObjectiveIndex)
@@ -54,7 +59,7 @@ public class QuestManager : MonoBehaviour
         Quest quest = currentQuests.Find(q => q.questEnum == questEnum);
         currentQuests.Remove(quest);
         QuestPopup.Instance.ShowQuestEndPopup(quest.title);
-        SoundManager.Instance.PlaySoundGlobal("Quest_End");
+        quest.OnQuestComplete?.Invoke();
     }
 
     IEnumerator UpdateDelay(Quest quest, int objectiveIndex)
@@ -76,5 +81,7 @@ public class QuestManager : MonoBehaviour
     {
         yield return new WaitForSeconds(startQuestDelay);
         AddQuest(mainQuest);
+        // testing
+        //AddQuest(QuestEnum.MilkDrinker);
     }
 }

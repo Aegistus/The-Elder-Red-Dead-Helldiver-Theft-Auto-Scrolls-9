@@ -4,9 +4,12 @@ using UnityEngine;
 using RotaryHeart.Lib.PhysicsExtension;
 using Physics = RotaryHeart.Lib.PhysicsExtension.Physics;
 using UnityEngine.AI;
+using UltEvents;
 
 public class PlayerShouts : MonoBehaviour
 {
+    public UltEvent OnFirstShout;
+
     [SerializeField] float shoutForce = 30f;
     [SerializeField] float shoutDistance = 10f;
     [SerializeField] float shoutRadius = 5f;
@@ -15,7 +18,8 @@ public class PlayerShouts : MonoBehaviour
     [SerializeField] ParticleSystem particleEffects;
 
     float cooldownTimer;
-    public bool ShoutsUnlocked { get; set; } = true;
+    bool usedFirstShout = false;
+    public bool ShoutsUnlocked { get; set; } = false;
 
     private void Update()
     {
@@ -53,5 +57,9 @@ public class PlayerShouts : MonoBehaviour
             print(sphereHits[i].collider.gameObject.name);
         }
         particleEffects.Play();
+        if (!usedFirstShout)
+        {
+            OnFirstShout?.Invoke();
+        }
     }
 }

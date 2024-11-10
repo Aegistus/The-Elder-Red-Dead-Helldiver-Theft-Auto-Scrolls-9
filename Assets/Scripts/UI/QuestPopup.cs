@@ -9,6 +9,12 @@ public class QuestPopup : MonoBehaviour
 
     public static QuestPopup Instance { get; private set; }
 
+    Queue<string> popupQueue = new Queue<string>();
+
+    bool showingPopup = false;
+    readonly float popupDelay = 4f;
+    float timer = 0;
+
     private void Awake()
     {
         if (Instance == null)
@@ -25,23 +31,45 @@ public class QuestPopup : MonoBehaviour
         popup.gameObject.SetActive(false);
     }
 
+    private void Update()
+    {
+        if (popupQueue.Count > 0)
+        {
+            if (!showingPopup && timer <= 0)
+            {
+                ShowPopup(popupQueue.Dequeue());
+            }
+        }
+        if (!showingPopup && timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
+    }
+
     public void ShowQuestStartPopup(string questName)
     {
-        popup.text = "Started: " + questName;
-        popup.gameObject.SetActive(true);
-        StartCoroutine(HidePopup());
+        popupQueue.Enqueue("Started: " + questName);
     }
 
     public void ShowQuestEndPopup(string questName)
     {
-        popup.text = "Completed: " + questName;
+        popupQueue.Enqueue("Completed: " + questName);
+    }
+
+    void ShowPopup(string message)
+    {
+        popup.text = message;
         popup.gameObject.SetActive(true);
+        showingPopup = true;
         StartCoroutine(HidePopup());
+        SoundManager.Instance.PlaySoundGlobal("Quest_Start");
     }
 
     IEnumerator HidePopup()
     {
         yield return new WaitForSeconds(duration);
         popup.gameObject.SetActive(false);
+        timer = popupDelay;
+        showingPopup = false;
     }
 }

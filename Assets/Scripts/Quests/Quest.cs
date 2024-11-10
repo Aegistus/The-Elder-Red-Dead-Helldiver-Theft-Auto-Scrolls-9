@@ -21,6 +21,7 @@ public class Quest
     [TextArea] public string description;
     public Objective[] objectives;
     public QuestEnum questEnum;
+    public UltEvent OnQuestComplete;
     
     [HideInInspector] public Objective currentObjective;
     [HideInInspector] public List<Objective> unlockedObjectives = new();

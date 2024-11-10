@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386f8569a83cfc74eae5518354ccbcc4, type: 3}
+  m_Name: HughJass01
+  m_EditorClassIdentifier: 
+  characterName: Hugh Jass
+  frames:
+  - characterDialogue: Howdy, that sure was lucky huh? Can't believe that dragon
+      killed those Imperials, right when they were about to execute us.
+    responses:
+    - Dragon? That was a cow!
+    - Dragon? How about you try dragon these nuts...
+  - characterDialogue: Cow? Never heard of cows. Round here we call them dragons.
+    responses:
+    - Well did you see where this "dragon" went?
+  - characterDialogue: The dragon went over there. I'll mark it on your map
+    responses:
+    - It's a shame the dragon destroyed this town.
+    - Those Imperials deserved what they got.
+    - Thanks Hugh.
+  - characterDialogue: Hahaha, that's so funny!
+    responses:
+    - ...

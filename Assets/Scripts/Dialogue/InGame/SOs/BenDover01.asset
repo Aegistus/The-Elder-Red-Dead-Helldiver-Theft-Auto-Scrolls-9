@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386f8569a83cfc74eae5518354ccbcc4, type: 3}
+  m_Name: BenDover01
+  m_EditorClassIdentifier: 
+  characterName: Ben Dover
+  frames:
+  - characterDialogue: Hello there traveller!
+    responses:
+    - You're on fire! Aren't you in pain?
+  - characterDialogue: Any news from Rorikstead?
+    responses:
+    - Hello? Can you understand me?
+  - characterDialogue: You have questions?
+    responses:
+    - Yes, do you need help?
+  - characterDialogue: Good day, friend! Keeping well?
+    responses:
+    - Forget this...
