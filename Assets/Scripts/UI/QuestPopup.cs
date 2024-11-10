@@ -25,9 +25,16 @@ public class QuestPopup : MonoBehaviour
         popup.gameObject.SetActive(false);
     }
 
-    public void ShowPopup(string questName)
+    public void ShowQuestStartPopup(string questName)
     {
         popup.text = "Started: " + questName;
+        popup.gameObject.SetActive(true);
+        StartCoroutine(HidePopup());
+    }
+
+    public void ShowQuestEndPopup(string questName)
+    {
+        popup.text = "Completed: " + questName;
         popup.gameObject.SetActive(true);
         StartCoroutine(HidePopup());
     }

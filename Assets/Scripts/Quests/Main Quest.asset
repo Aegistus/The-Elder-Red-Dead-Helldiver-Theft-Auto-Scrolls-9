@@ -23,8 +23,8 @@ MonoBehaviour:
     OnFinish:
       m_PersistentCalls:
         m_Calls: []
-  - position: {x: 0, y: 0, z: 0}
-    description: Kill the "dragon"
+  - position: {x: -232.44, y: 2.98, z: -90.38}
+    description: Find the dragon cow
     OnStart:
       m_PersistentCalls:
         m_Calls: []

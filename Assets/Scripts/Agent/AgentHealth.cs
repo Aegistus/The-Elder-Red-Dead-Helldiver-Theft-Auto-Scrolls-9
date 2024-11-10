@@ -8,6 +8,7 @@ using UltEvents;
 
 public class AgentHealth : MonoBehaviour
 {
+    public UltEvent OnDeath;
     public event Action<DamageSource> OnDamageTaken;
     public event Action OnArmorChange;
     public event Action OnHealthChange;
@@ -144,6 +145,7 @@ public class AgentHealth : MonoBehaviour
         equipment.DropWeapon();
         OnHealthChange?.Invoke();
         OnAgentDeath?.Invoke();
+        OnDeath?.Invoke();
         StartCoroutine(StopRagdoll());
         NavMeshAgent navAgent = GetComponent<NavMeshAgent>();
         if (navAgent != null)

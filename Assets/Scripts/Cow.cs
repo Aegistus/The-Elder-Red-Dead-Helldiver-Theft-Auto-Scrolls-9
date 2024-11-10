@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UltEvents;
 
 public class Cow : MonoBehaviour, IInteractable
 {
+    public UltEvent OnMilkedToCompletion;
     public float MilkMax => milkMax;
     public float MilkRemaining => milkRemaining;
 
@@ -14,6 +16,7 @@ public class Cow : MonoBehaviour, IInteractable
     [SerializeField] float milkSpeed;
 
     float milkRemaining;
+    bool calledEvent = false;
 
     private void Start()
     {
@@ -34,6 +37,11 @@ public class Cow : MonoBehaviour, IInteractable
         color.g = milkRemaining / milkMax;
         color.b = milkRemaining / milkMax;
         rend.material.color = color;
+        if (milkRemaining <= 0 && !calledEvent)
+        {
+            OnMilkedToCompletion?.Invoke();
+            calledEvent = true;
+        }
     }
 
     public void Interact(GameObject interactor)

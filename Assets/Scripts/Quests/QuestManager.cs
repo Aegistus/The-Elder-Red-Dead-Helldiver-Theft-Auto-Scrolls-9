@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum QuestEnum
+{
+    MainQuest,
+}
+
 public class QuestManager : MonoBehaviour
 {
     public static QuestManager Instance { get; private set; }
@@ -11,7 +16,9 @@ public class QuestManager : MonoBehaviour
 
     [SerializeField] float startQuestDelay = 3f;
     [SerializeField] Quest mainQuest;
-    private void Start()
+    [SerializeField] List<Quest> sideQuests;
+
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -21,33 +28,47 @@ public class QuestManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    private void Start()
+    {
         StartCoroutine(StartMainQuest());
     }
     public void AddQuest(Quest quest)
     {
-        quest = Instantiate(quest);
         currentQuests.Add(quest);
-        QuestPopup.Instance.ShowPopup(quest.title);
+        QuestPopup.Instance.ShowQuestStartPopup(quest.title);
         SoundManager.Instance.PlaySoundGlobal("Quest_Start");
         quest.currentObjective = quest.objectives[0];
-        UpdateQuestObjective(quest, 0);
+        UpdateQuestObjective(quest.questEnum, 0);
     }
 
-    public void UpdateQuestObjective(Quest quest, int newObjectiveIndex)
+    public void UpdateQuestObjective(QuestEnum questEnum, int newObjectiveIndex)
     {
+        Quest quest = currentQuests.Find(q => q.questEnum == questEnum);
         StartCoroutine(UpdateDelay(quest, newObjectiveIndex));
+    }
+
+    public void FinishQuest(QuestEnum questEnum)
+    {
+        Quest quest = currentQuests.Find(q => q.questEnum == questEnum);
+        currentQuests.Remove(quest);
+        QuestPopup.Instance.ShowQuestEndPopup(quest.title);
+        SoundManager.Instance.PlaySoundGlobal("Quest_End");
     }
 
     IEnumerator UpdateDelay(Quest quest, int objectiveIndex)
     {
         yield return new WaitForSeconds(questUpdateDelay);
+        quest.currentObjective.OnFinish.Invoke();
         quest.unlockedObjectives.Add(quest.objectives[objectiveIndex]);
         quest.currentObjective = quest.objectives[objectiveIndex];
+        quest.currentObjective.OnStart.Invoke();
         QuestUpdatePopup.Instance.ShowPopup(quest.currentObjective.description);
+        SoundManager.Instance.PlaySoundGlobal("Quest_New_Objective");
         var questMarker = GameObject.FindWithTag("Quest Marker");
         if (questMarker != null)
         {
-            questMarker.transform.position = quest.currentObjective.position;
+            questMarker.transform.position = quest.currentObjective.location.position + quest.currentObjective.offset;
         }
     }
 
