@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d2a027e915b674a8078208577c6cd5, type: 3}
   m_Name: Revolver_Bullet
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6174654087137397696, guid: 45d7ebc1033e1d64bae773bf43d217f6, type: 3}
+  prefabs:
+  - {fileID: 6174654087137397696, guid: 45d7ebc1033e1d64bae773bf43d217f6, type: 3}
   instanceCount: 300

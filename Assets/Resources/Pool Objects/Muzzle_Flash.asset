@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d2a027e915b674a8078208577c6cd5, type: 3}
   m_Name: Muzzle_Flash
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2239210133793577498, guid: f17aaa1ac4c9e4e4b906bda15894341f, type: 3}
+  prefabs:
+  - {fileID: 2239210133793577498, guid: f17aaa1ac4c9e4e4b906bda15894341f, type: 3}
   instanceCount: 300

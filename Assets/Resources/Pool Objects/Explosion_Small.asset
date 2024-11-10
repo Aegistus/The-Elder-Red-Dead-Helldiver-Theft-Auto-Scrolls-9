@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d2a027e915b674a8078208577c6cd5, type: 3}
   m_Name: Explosion_Small
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4813193194602214920, guid: 80018036422768b4c969811b653b8180, type: 3}
+  prefabs:
+  - {fileID: 4813193194602214920, guid: 80018036422768b4c969811b653b8180, type: 3}
   instanceCount: 50

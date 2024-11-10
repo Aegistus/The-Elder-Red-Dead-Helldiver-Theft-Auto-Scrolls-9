@@ -31,7 +31,7 @@ public class QuestManager : MonoBehaviour
     }
     private void Start()
     {
-        StartCoroutine(StartMainQuest());
+        AddQuestWithDelay(QuestEnum.MainQuest, 3);
     }
     public void AddQuest(Quest quest)
     {
@@ -44,9 +44,23 @@ public class QuestManager : MonoBehaviour
     public void AddQuest(QuestEnum questEnum)
     {
         Quest quest = sideQuests.Find(q => q.questEnum == questEnum);
+        if (quest == null)
+        {
+            quest = mainQuest;
+        }
         AddQuest(quest);
     }
 
+    public void AddQuestWithDelay(QuestEnum questEnum, float delay)
+    {
+        StartCoroutine(QuestDelay(questEnum, delay));
+    }
+
+    IEnumerator QuestDelay(QuestEnum questEnum, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        AddQuest(questEnum);
+    }
     public void UpdateQuestObjective(QuestEnum questEnum, int newObjectiveIndex)
     {
         Quest quest = currentQuests.Find(q => q.questEnum == questEnum);
@@ -87,11 +101,11 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    IEnumerator StartMainQuest()
-    {
-        yield return new WaitForSeconds(startQuestDelay);
-        AddQuest(mainQuest);
-        // testing
-        //AddQuest(QuestEnum.MilkDrinker);
-    }
+    //IEnumerator StartMainQuest()
+    //{
+    //    yield return new WaitForSeconds(startQuestDelay);
+    //    AddQuest(mainQuest);
+    //    // testing
+    //    //AddQuest(QuestEnum.MilkDrinker);
+    //}
 }

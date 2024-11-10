@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d2a027e915b674a8078208577c6cd5, type: 3}
   m_Name: Orbital_Explosion
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5341716570317557845, guid: 443f480fe1959e94fb7872ca099e0480, type: 3}
+  prefabs:
+  - {fileID: 5341716570317557845, guid: 443f480fe1959e94fb7872ca099e0480, type: 3}
   instanceCount: 50

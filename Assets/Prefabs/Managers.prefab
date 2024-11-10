@@ -123,4 +123,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numOfPositionalSources: 500
   mixerGroup: {fileID: 0}
-  soundPath: 
+  soundPath: Sounds

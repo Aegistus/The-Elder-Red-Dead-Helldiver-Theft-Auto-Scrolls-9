@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d2a027e915b674a8078208577c6cd5, type: 3}
   m_Name: Laser_Shot
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5617885477962982306, guid: 8761c1e9a7347cf4887317062381b0c6, type: 3}
+  prefabs:
+  - {fileID: 5617885477962982306, guid: 8761c1e9a7347cf4887317062381b0c6, type: 3}
   instanceCount: 300
