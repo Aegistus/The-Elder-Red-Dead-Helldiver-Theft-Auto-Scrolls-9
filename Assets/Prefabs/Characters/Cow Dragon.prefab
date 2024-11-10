@@ -349,7 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRadius: 30
-  standDistance: 20
+  standDistance: 10
 --- !u!114 &2151605777243159801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,6 +362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5287ea82a7f2a2b4ea1c09c76c342fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDeath:
+    _PersistentCalls: []
   damageImmunities: 01000000
   allowArmorRegen: 0
   armorRegenDelay: 0
