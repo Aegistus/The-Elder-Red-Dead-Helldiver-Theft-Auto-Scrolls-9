@@ -731,9 +731,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06936e63a900c0042b95159997d41671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shoutForce: 30
+  shoutForce: 100
   shoutDistance: 10
   shoutRadius: 5
+  cooldown: 5
   layers:
     serializedVersion: 2
     m_Bits: 2312
@@ -2365,6 +2366,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198641420387918128, guid: 02f7f04a484c69143a794e60d5a935b1, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 198641420387918128, guid: 02f7f04a484c69143a794e60d5a935b1, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 199650865808056460, guid: 02f7f04a484c69143a794e60d5a935b1, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -2694,6 +2703,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4001793114659862, guid: 72a652ab7835362499c9686288610212, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198224009598360954, guid: 72a652ab7835362499c9686288610212, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198835972586501196, guid: 72a652ab7835362499c9686288610212, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 199326538133792364, guid: 72a652ab7835362499c9686288610212, type: 3}
