@@ -20,7 +20,7 @@ public class PlayerShouts : MonoBehaviour
     float shoutDelay = 1.1f;
     float cooldownTimer;
     bool usedFirstShout = false;
-    public bool ShoutsUnlocked { get; set; } = true;
+    public bool ShoutsUnlocked { get; set; } = false;
 
     private void Update()
     {
