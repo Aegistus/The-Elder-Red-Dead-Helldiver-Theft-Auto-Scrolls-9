@@ -48,7 +48,7 @@ public class PlayerShouts : MonoBehaviour
         Collider[] collisions = Physics.OverlapSphere(transform.position, shoutRadius, layers, drawDuration: 5f, preview: PreviewCondition.Editor);
         for (int i = 0; i < collisions.Length; i++)
         {
-            if (collisions[i].GetComponent<PlayerController>())
+            if (collisions[i].GetComponent<PlayerController>() || collisions[i] is MeshCollider)
             {
                 continue;
             }
